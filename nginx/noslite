@@ -1,0 +1,21 @@
+server {
+    listen 80 default_server;
+    server_name _;
+    root /var/www/noslite/site;
+    access_log /var/www/noslite/logs/access.log;
+    
+    index index.html;
+    error_page 404 /404.html;
+    
+    gzip_static on;
+    include expires.conf;
+    include protect-system-files.conf;
+    
+    location  /404.html {
+        internal;
+    }
+
+    location / {
+        try_files $uri $uri/ $uri.html =404;
+    }
+}

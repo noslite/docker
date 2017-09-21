@@ -1,0 +1,26 @@
+version: '3'
+services:
+  nos:
+    environment:
+      - COMPOSER_ALLOW_SUPERUSER=1
+    build:
+      dockerfile: Dockerfile
+      context: ./php-cli
+    volumes:
+     - ./noslite:/var/www/noslite
+  nginx:
+    ports:
+      - 1234:80
+    volumes:
+     - ./noslite:/var/www/noslite
+    build:
+      dockerfile: Dockerfile
+      context: ./nginx
+  composer:
+    environment:
+      - COMPOSER_ALLOW_SUPERUSER=1
+    build:
+      dockerfile: Dockerfile
+      context: ./composer
+    volumes:
+     - ./noslite:/var/www/noslite
