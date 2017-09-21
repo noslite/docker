@@ -1,3 +1,3 @@
 [submodule "noslite"]
 	path = noslite
-	url = git@github.com:haampie/noslite.git
+	url = git@github.com:noslite/noslite.git
