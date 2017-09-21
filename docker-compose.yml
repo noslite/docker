@@ -1,13 +1,14 @@
 version: '3'
 services:
   nos:
-    environment:
-      - COMPOSER_ALLOW_SUPERUSER=1
     build:
       dockerfile: Dockerfile
       context: ./php-cli
     volumes:
      - ./noslite:/var/www/noslite
+    command: crond -f
+    depends_on:
+      - initialize
   nginx:
     ports:
       - 1234:80
@@ -24,3 +25,11 @@ services:
       context: ./composer
     volumes:
      - ./noslite:/var/www/noslite
+  initialize:
+    build:
+      dockerfile: Dockerfile
+      context: ./php-cli
+    volumes:
+     - ./noslite:/var/www/noslite
+    command: php src/noslite.php
+

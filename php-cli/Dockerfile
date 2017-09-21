@@ -6,5 +6,4 @@ RUN apk update && \
     apk add --update tzdata && \
     cp /usr/share/zoneinfo/Europe/Amsterdam /etc/localtime && \
     echo "Europe/Amsterdam" > /etc/timezone
-RUN php src/noslite.php
-CMD ["crond", "-f"]
+
