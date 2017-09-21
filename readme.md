@@ -1,18 +1,19 @@
 # NOS lite: Docker setup
 
-## Clone het project met submodule
+Clone het project met submodules
 
 ```sh
-git clone --recursive ...
+git clone --recursive git@github.com:noslite/docker.git noslite-docker
+cd noslite-docker
 ```
 
-## Installeer de dependencies
+Installeer de dependencies
 
 ```sh
 docker-compose run composer install
 ```
 
-## Start de service & server
+Start de service & server
 
 ```sh
 docker-compose up
