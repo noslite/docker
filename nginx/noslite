@@ -7,11 +7,11 @@ server {
     index index.html;
     error_page 404 /404.html;
     
+    location = /404.html {
+        internal;
+    }
+    
     gzip_static on;
     include expires.conf;
     include protect-system-files.conf;
-    
-    location /404.html {
-        internal;
-    }
 }
